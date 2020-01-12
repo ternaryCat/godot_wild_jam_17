@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var speed: = Vector2(400.0, 500.0)
 export var gravity: = 3500.0
 export var device_id: = 0
+export var life: = 100
 
 var _velocity: = Vector2.ZERO
 
@@ -28,6 +29,9 @@ func _physics_process(delta: float) -> void:
   _velocity = move_and_slide_with_snap(
     _velocity, snap, FLOOR_NORMAL, true
   )
+
+  $life_bar.set_value(life)
+  $life_bar.visible = life < $life_bar.max_value
   #$skin/animation.play("walk")
 
 func get_direction() -> Vector2:
