@@ -1,4 +1,32 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://presets/game/player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1114.15, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.3728, 535.407 )
 
 [node name="game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 204.053, 60.9508 )
+speed = Vector2( 900, 1200 )
+gravity = 1600.0
+device_id = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 938.391, 1085.66 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 27.3982, 571.939 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1904.18, 561.665 )
+shape = SubResource( 2 )
 
