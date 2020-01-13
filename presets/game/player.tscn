@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/presets/game/player/player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://themes/player_theme.tres.theme" type="Theme" id=3]
+[ext_resource path="res://presets/game/guns/machine_gun.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.3454, 32.2625 )
@@ -26,4 +27,7 @@ theme = ExtResource( 3 )
 step = 1.0
 value = 100.0
 percent_visible = false
+
+[node name="weapon" parent="." instance=ExtResource( 4 )]
+position = Vector2( 26.4598, -0.174515 )
 

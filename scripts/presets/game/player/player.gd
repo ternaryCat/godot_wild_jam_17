@@ -12,6 +12,7 @@ const FLOOR_NORMAL: = Vector2.UP
 var left: = 0.0
 var right: = 0.0
 var top: = 0.0
+var allow_shoot: = false
 
 func _input(event: InputEvent) -> void:
   if event.get_device() != device_id: return
@@ -19,6 +20,7 @@ func _input(event: InputEvent) -> void:
   if event.is_action('move_left'): left = event.get_action_strength('move_left')
   if event.is_action('move_right'): right = event.get_action_strength('move_right')
   if event.is_action('jump'): top = event.get_action_strength('jump')
+  if event.is_action('shoot'): allow_shoot = event.is_action_pressed('shoot')
 
 func _physics_process(delta: float) -> void:
   _velocity.y += gravity * delta
@@ -29,6 +31,8 @@ func _physics_process(delta: float) -> void:
   _velocity = move_and_slide_with_snap(
     _velocity, snap, FLOOR_NORMAL, true
   )
+  if allow_shoot:
+    shoot()
 
   $life_bar.set_value(life)
   $life_bar.visible = life < $life_bar.max_value
@@ -57,3 +61,6 @@ func calculate_move_velocity(
 func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) -> Vector2:
   var stomp_jump: = -speed.y if Input.is_action_pressed("jump") else -stomp_impulse
   return Vector2(linear_velocity.x, stomp_jump)
+
+func shoot():
+  $weapon.shoot()
