@@ -10,6 +10,10 @@ extents = Vector2( 11.3728, 535.407 )
 
 [node name="game" type="Node2D"]
 
+[node name="bullets" type="Node2D" parent="." groups=[
+"bullets_layer",
+]]
+
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 204.053, 60.9508 )
 speed = Vector2( 900, 1200 )
@@ -17,6 +21,7 @@ gravity = 1600.0
 device_id = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 938.391, 1085.66 )
