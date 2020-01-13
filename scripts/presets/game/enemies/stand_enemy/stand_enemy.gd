@@ -1,10 +1,17 @@
 extends Node2D
 
+export var life: = 100
 var detected_players_list: = []
 var current_target
 var flipped: = false
 
+func _ready():
+  $weapon.active_player_trigger()
+
 func _process(delta):
+  $life_bar.set_value(life)
+  $life_bar.visible = life < $life_bar.max_value
+
   if !current_target:
     return
   if is_looking_at(current_target):
@@ -48,3 +55,9 @@ func _on_player_detector_area_exited(area):
   if current_target == area.get_owner():
     current_target = null
   choose_current_player()
+
+func _on_damage_detector_area_entered(area):
+  var damage_dealler = area.get_owner()
+  life -= damage_dealler.damage
+  if life <= 0:
+    queue_free()
