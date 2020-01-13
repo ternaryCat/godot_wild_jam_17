@@ -7,6 +7,10 @@ onready var bullet = preload('res://presets/game/bullets/machine_bullet.tscn')
 var flipped: = false
 
 func shoot():
+  if !$delay_timer.is_stopped():
+    return
+
+  $delay_timer.start()
   var new_bullet = bullet.instance()
   new_bullet.set_position($bullet_point.get_global_position())
   if is_active_enemy_trigger:
