@@ -1,10 +1,6 @@
-extends Node2D
-
-export var is_active_enemy_trigger: = false
-export var is_active_player_trigger: = false
+extends BaseGun
 
 onready var bullet = preload('res://presets/game/bullets/machine_bullet.tscn')
-var flipped: = false
 
 func shoot():
   if !$delay_timer.is_stopped():
@@ -23,15 +19,3 @@ func shoot():
     bullet_rotation += PI
   new_bullet.direction_angle = bullet_rotation
   $bullets.add_child(new_bullet)
-
-func turn_around():
-  $skin.set_flip_v(true)
-  $skin.position.x *= -1
-  $bullet_point.position.x *= -1
-  flipped = !flipped
-
-func active_enemy_trigger():
-  is_active_enemy_trigger = true
-
-func active_player_trigger():
-  is_active_player_trigger = true
