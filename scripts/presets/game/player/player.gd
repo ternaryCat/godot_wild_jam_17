@@ -14,6 +14,9 @@ var right: = 0.0
 var top: = 0.0
 var allow_shoot: = false
 
+func _ready():
+  $weapon.active_enemy_trigger()
+
 func _input(event: InputEvent) -> void:
   if event.get_device() != device_id: return
 
@@ -64,3 +67,9 @@ func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) ->
 
 func shoot():
   $weapon.shoot()
+
+func _on_damage_detector_area_entered(area):
+  var damage_dealler = area.get_owner()
+  life -= damage_dealler.damage
+  if life <= 0:
+    print('Death!')
