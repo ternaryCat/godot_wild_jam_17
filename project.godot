@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "BaseBullet",
+"language": "GDScript",
+"path": "res://presets/game/bullets/base_bullet.gd"
+}, {
+"base": "Node2D",
 "class": "BaseGun",
 "language": "GDScript",
 "path": "res://scripts/presets/game/guns/base_gun.gd"
 } ]
 _global_script_class_icons={
+"BaseBullet": "",
 "BaseGun": ""
 }
 

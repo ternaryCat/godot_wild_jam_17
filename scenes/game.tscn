@@ -38,3 +38,9 @@ shape = SubResource( 2 )
 
 [node name="stand_enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1134.95, 1037.02 )
+
+[node name="stand_enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1008.26, 1036.6 )
+
+[node name="stand_enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 874.461, 1037.02 )
