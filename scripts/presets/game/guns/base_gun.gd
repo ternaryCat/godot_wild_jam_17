@@ -24,6 +24,9 @@ func shoot():
   new_bullet.direction_angle = bullet_rotation
   $bullets.add_child(new_bullet)
 
+func stop_shoot():
+  pass
+
 func turn_around():
   $skin.set_flip_v(true)
   $skin.position.x *= -1
