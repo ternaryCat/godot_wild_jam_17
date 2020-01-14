@@ -9,8 +9,10 @@ var bullet
 func shoot():
   if !$delay_timer.is_stopped():
     return
-
   $delay_timer.start()
+  spawn_bullet()
+
+func spawn_bullet():
   var new_bullet = bullet.instance()
   new_bullet.set_position($bullet_point.get_global_position())
   if is_active_enemy_trigger:
