@@ -51,6 +51,8 @@ step = 1.0
 value = 100.0
 percent_visible = false
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 [connection signal="area_entered" from="player_detector" to="." method="_on_player_detector_area_entered"]
 [connection signal="area_exited" from="player_detector" to="." method="_on_player_detector_area_exited"]
 [connection signal="area_entered" from="damage_detector" to="." method="_on_damage_detector_area_entered"]
