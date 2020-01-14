@@ -1,14 +1,21 @@
-extends Node2D
+extends KinematicBody2D
 
+export var speed: = Vector2(900.0, 1200.0)
+export var gravity: = 1600.0
 export var life: = 100
+
 var detected_players_list: = []
 var current_target
 var flipped: = false
 
+var _velocity: = Vector2.ZERO
+const FLOOR_NORMAL: = Vector2.UP
+
 func _ready():
   $weapon.active_player_trigger()
 
-func _process(delta):
+func _physics_process(delta):
+  move_by_gravity(delta)
   $life_bar.set_value(life)
   $life_bar.visible = life < $life_bar.max_value
 
@@ -18,6 +25,13 @@ func _process(delta):
     $weapon.shoot()
     return
   turn_around()
+
+func move_by_gravity(delta):
+  if is_on_floor():
+    _velocity = Vector2.ZERO
+    return
+  _velocity += Vector2(0, gravity) * delta
+  move_and_slide_with_snap(_velocity, Vector2.ZERO, FLOOR_NORMAL, true)
 
 func choose_current_player():
   if current_target != null:

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var speed: = Vector2(400.0, 500.0)
-export var gravity: = 3500.0
+export var speed: = Vector2(900.0, 1200.0)
+export var gravity: = 1600.0
 export var device_id: = 0
 export var life: = 100
 
