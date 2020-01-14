@@ -28,7 +28,7 @@ func stop_shoot():
   pass
 
 func turn_around():
-  $skin.set_flip_v(true)
+  $skin.set_flip_h(true)
   $skin.position.x *= -1
   $bullet_point.position.x *= -1
   flipped = !flipped
