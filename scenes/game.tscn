@@ -17,8 +17,6 @@ extents = Vector2( 11.3728, 535.407 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 204.053, 60.9508 )
-speed = Vector2( 900, 1200 )
-gravity = 1600.0
 device_id = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -37,10 +35,10 @@ position = Vector2( 1904.18, 561.665 )
 shape = SubResource( 2 )
 
 [node name="stand_enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1134.95, 1037.02 )
+position = Vector2( 1250.46, 54.1743 )
 
 [node name="stand_enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1008.26, 1036.6 )
+position = Vector2( 984.286, 488.636 )
 
 [node name="stand_enemy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 874.461, 1037.02 )
+position = Vector2( 710.071, 869.205 )

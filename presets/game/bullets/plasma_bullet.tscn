@@ -62,4 +62,3 @@ autostart = true
 [connection signal="area_entered" from="player_trigger" to="." method="_on_player_trigger_area_entered"]
 [connection signal="area_entered" from="player_weapon_trigger" to="." method="_on_weapon_trigger_area_entered"]
 [connection signal="area_entered" from="enemy_weapon_trigger" to="." method="_on_weapon_trigger_area_entered"]
-[connection signal="timeout" from="dead_timer" to="." method="_on_dead_timer_timeout"]
