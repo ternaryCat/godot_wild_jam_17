@@ -25,7 +25,7 @@ func choose_current_player():
   current_target = detected_players_list.pop_front()
 
 func turn_around():
-  $skin.set_flip_v(true)
+  $skin.set_flip_h(true)
   $weapon.position.x *= -1
   $weapon.turn_around()
   flipped = !flipped

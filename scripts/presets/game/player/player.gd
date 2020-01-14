@@ -6,6 +6,7 @@ export var device_id: = 0
 export var life: = 100
 
 var _velocity: = Vector2.ZERO
+var flipped: = false
 
 const FLOOR_NORMAL: = Vector2.UP
 
@@ -29,6 +30,8 @@ func _physics_process(delta: float) -> void:
   _velocity.y += gravity * delta
   var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
   var direction: = get_direction()
+  if (_velocity.x > 0 and flipped) or (_velocity.x < 0 and !flipped):
+    turn_around()
   _velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
   var snap: Vector2 = Vector2.DOWN * 60.0 if direction.y == 0.0 else Vector2.ZERO
   _velocity = move_and_slide_with_snap(
@@ -67,6 +70,12 @@ func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) ->
 
 func shoot():
   $weapon.shoot()
+
+func turn_around():
+  $skin.set_flip_h(true)
+  $weapon.position.x *= -1
+  $weapon.turn_around()
+  flipped = !flipped
 
 func _on_damage_detector_area_entered(area):
   var damage_dealler = area.get_owner()
