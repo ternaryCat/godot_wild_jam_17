@@ -1,6 +1,7 @@
 extends BaseGun
 
 var damage: = 50
+var destructible: = false
 
 func shoot():
   if !$delay_timer.is_stopped() or !$atack_period_timer.is_stopped():
