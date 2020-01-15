@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://presets/game/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://presets/game/enemies/moving_enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://presets/game/enemies/stand_enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://presets/game/emitters/moving_enemy_emitter.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1114.15, 10 )
@@ -31,7 +32,7 @@ position = Vector2( 938.391, 1085.66 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 27.3982, 571.939 )
+position = Vector2( 10.5793, 559.325 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -52,3 +53,6 @@ position = Vector2( 710.071, 869.205 )
 
 [node name="stand_enemy4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 537.677, 1003.76 )
+
+[node name="moving_enemy_emitter" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1429.11, 1042.88 )
