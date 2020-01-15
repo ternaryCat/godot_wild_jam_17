@@ -13,18 +13,20 @@ const FLOOR_NORMAL: = Vector2.UP
 var left: = 0.0
 var right: = 0.0
 var top: = 0.0
-var allow_shoot: = false
+var allow_shoot
 
 func _ready():
   $weapon.active_enemy_trigger()
 
-func _input(event: InputEvent) -> void:
-  if event.get_device() != device_id: return
-
-  if event.is_action('move_left'): left = event.get_action_strength('move_left')
-  if event.is_action('move_right'): right = event.get_action_strength('move_right')
-  if event.is_action('jump'): top = event.get_action_strength('jump')
-  if event.is_action('shoot'): allow_shoot = event.is_action_pressed('shoot')
+func _on_input_interface_action_detected(action, params):
+  if action == 'move_left':
+    left = params['strength']
+  if action == 'move_right':
+    right = params['strength']
+  if action == 'jump':
+    top = params['strength']
+  if action == 'shoot':
+    allow_shoot = params['allow']
 
 func _physics_process(delta: float) -> void:
   _velocity.y += gravity * delta
