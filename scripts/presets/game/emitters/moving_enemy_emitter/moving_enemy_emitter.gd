@@ -5,6 +5,8 @@ onready var enemy: = preload('res://presets/game/enemies/moving_enemy.tscn')
 
 func _process(delta):
   if life <= 0:
+    $damage_area.monitorable = false
+    $damage_area.monitoring = false
     return
     
   $life_bar.set_value(life)
@@ -25,5 +27,3 @@ func _on_damage_area_area_entered(area):
   if life <= 0:
     $skin.hide()
     $life_bar.hide()
-    $damage_area.monitorable = false
-    $damage_area.monitoring = false
