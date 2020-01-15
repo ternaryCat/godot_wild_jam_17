@@ -60,10 +60,9 @@ position = Vector2( 246.847, 600.438 )
 shape = SubResource( 5 )
 
 [node name="enemies" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="moving_enemy_emitter" parent="enemies" instance=ExtResource( 2 )]
-position = Vector2( 1254.73, 241.955 )
+position = Vector2( 1270.63, 287.005 )
 
 [node name="stand_enemy" parent="enemies" instance=ExtResource( 3 )]
 position = Vector2( 494.176, 935.794 )

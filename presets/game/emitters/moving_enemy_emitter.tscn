@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/presets/game/emitters/moving_enemy_emitter/moving_enemy_emitter.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://themes/player_theme.tres.theme" type="Theme" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 94.6927, 144.346 )
 
 [node name="moving_enemy_emitter" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,4 +23,25 @@ position = Vector2( 0, -101.67 )
 [node name="emitter_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="damage_area" type="Area2D" parent="."]
+position = Vector2( -1.29236, -115.02 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="collision" type="CollisionShape2D" parent="damage_area"]
+shape = SubResource( 1 )
+
+[node name="life_bar" type="ProgressBar" parent="."]
+visible = false
+margin_left = -120.0
+margin_top = -282.0
+margin_right = 121.0
+margin_bottom = -268.0
+theme = ExtResource( 3 )
+max_value = 300.0
+step = 1.0
+value = 300.0
+percent_visible = false
 [connection signal="timeout" from="emitter_timer" to="." method="_on_emitter_timer_timeout"]
+[connection signal="area_entered" from="damage_area" to="." method="_on_damage_area_area_entered"]
