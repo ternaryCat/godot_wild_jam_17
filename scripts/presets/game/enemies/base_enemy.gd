@@ -23,7 +23,8 @@ func move(delta):
   _velocity += Vector2(0, gravity) * delta
   if is_on_floor():
     _velocity = Vector2.ZERO
-  _velocity.x = (right - left) * speed.x * delta
+  if !current_target:
+    _velocity.x = (right - left) * speed.x * delta
   move_and_slide_with_snap(_velocity, _velocity, FLOOR_NORMAL, true)
 
 func choose_current_player():
