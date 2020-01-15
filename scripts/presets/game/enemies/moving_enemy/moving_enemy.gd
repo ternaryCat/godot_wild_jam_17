@@ -7,9 +7,9 @@ func _ready():
   last_position = position
 
 func _physics_process(delta):
-  #print([left, last_position, position, !!current_target])
   move(delta)
   calculate_direction()
+  calculate_flipping()
   last_position = position
   $life_bar.set_value(life)
   $life_bar.visible = life < $life_bar.max_value
@@ -30,6 +30,12 @@ func calculate_direction():
       return
     left = 1.0
     return
+
+func calculate_flipping():
+  if current_target:
+    return
+  if (right > 0 and flipped) or (left > 0 and !flipped):
+    turn_around()
 
 func _on_block_detector_body_entered(body):
   right = 1.0 - right
