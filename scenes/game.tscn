@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://presets/game/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://presets/game/players/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://presets/game/enemies/moving_enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://presets/game/enemies/stand_enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://presets/game/emitters/moving_enemy_emitter.tscn" type="PackedScene" id=4]
