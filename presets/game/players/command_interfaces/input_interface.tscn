@@ -2,5 +2,5 @@
 
 [ext_resource path="res://scripts/presets/game/player/command_interfaces/input_interface/input_interface.gd" type="Script" id=1]
 
-[node name="input_interface" type="Node"]
+[node name="input_interface" type="Node2D"]
 script = ExtResource( 1 )

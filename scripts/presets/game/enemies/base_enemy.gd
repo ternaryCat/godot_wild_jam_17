@@ -39,7 +39,7 @@ func turn_around():
   flipped = !flipped
 
 func is_looking_at(player):
-  return (detected_players_list.has(player) or current_target == player) and\
+  return is_instance_valid(player) and (detected_players_list.has(player) or current_target == player) and\
          ((position.x < player.position.x and !flipped) or (position.x >= player.position.x and flipped))
 
 func add_player(player):
@@ -69,3 +69,8 @@ func _on_damage_detector_area_entered(area):
   life -= damage_dealler.damage
   if life <= 0:
     queue_free()
+
+func validate_current_target():
+  if !is_instance_valid(current_target):
+    current_target = null
+    choose_current_player()

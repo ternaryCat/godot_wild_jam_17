@@ -1,58 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://presets/game/players/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://presets/game/enemies/moving_enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://presets/game/enemies/stand_enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://presets/game/emitters/moving_enemy_emitter.tscn" type="PackedScene" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1114.15, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.3728, 535.407 )
+[ext_resource path="res://scripts/scenes/game/game.gd" type="Script" id=1]
 
 [node name="game" type="Node2D"]
-
-[node name="bullets" type="Node2D" parent="." groups=[
-"bullets_layer",
-]]
-
-[node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 204.053, 60.9508 )
-speed = Vector2( 900, 1400 )
-gravity = 1800.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-editor/display_folded = true
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 938.391, 1085.66 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 10.5793, 559.325 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1904.18, 561.665 )
-shape = SubResource( 2 )
-
-[node name="moving_enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1611.49, 746.318 )
-
-[node name="stand_enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1250.46, 54.1743 )
-
-[node name="stand_enemy2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 984.286, 488.636 )
-
-[node name="stand_enemy3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 710.071, 869.205 )
-
-[node name="stand_enemy4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 537.677, 1003.76 )
-
-[node name="moving_enemy_emitter" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1429.11, 1042.88 )
+script = ExtResource( 1 )

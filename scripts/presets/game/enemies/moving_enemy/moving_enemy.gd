@@ -7,6 +7,7 @@ func _ready():
   last_position = position
 
 func _physics_process(delta):
+  validate_current_target()
   move(delta)
   calculate_direction()
   calculate_flipping()

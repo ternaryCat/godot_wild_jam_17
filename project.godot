@@ -23,11 +23,23 @@ _global_script_classes=[ {
 "class": "BaseGun",
 "language": "GDScript",
 "path": "res://scripts/presets/game/guns/base_gun.gd"
+}, {
+"base": "Node2D",
+"class": "BaseLevel",
+"language": "GDScript",
+"path": "res://scripts/presets/game/levels/base_level.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "BasePlayer",
+"language": "GDScript",
+"path": "res://scripts/presets/game/player/base_player.gd"
 } ]
 _global_script_class_icons={
 "BaseBullet": "",
 "BaseEnemy": "",
-"BaseGun": ""
+"BaseGun": "",
+"BaseLevel": "",
+"BasePlayer": ""
 }
 
 [application]

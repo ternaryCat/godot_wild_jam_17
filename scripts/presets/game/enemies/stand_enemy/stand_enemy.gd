@@ -1,6 +1,7 @@
 extends BaseEnemy
 
 func _physics_process(delta):
+  validate_current_target()
   move(delta)
   $life_bar.set_value(life)
   $life_bar.visible = life < $life_bar.max_value

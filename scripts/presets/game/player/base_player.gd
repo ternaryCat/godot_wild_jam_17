@@ -1,8 +1,8 @@
 extends KinematicBody2D
+class_name BasePlayer
 
 export var speed: = Vector2(900.0, 1200.0)
 export var gravity: = 1600.0
-export var device_id: = 0
 export var life: = 100
 
 var _velocity: = Vector2.ZERO
@@ -27,6 +27,8 @@ func _on_input_interface_action_detected(action, params):
     top = params['strength']
   if action == 'shoot':
     allow_shoot = params['allow']
+  if action == 'death':
+    queue_free()
 
 func _physics_process(delta: float) -> void:
   _velocity.y += gravity * delta
@@ -78,9 +80,3 @@ func turn_around():
   $weapon.position.x *= -1
   $weapon.turn_around()
   flipped = !flipped
-
-func _on_damage_detector_area_entered(area):
-  var damage_dealler = area.get_owner()
-  life -= damage_dealler.damage
-  if life <= 0:
-    print('Death!')
