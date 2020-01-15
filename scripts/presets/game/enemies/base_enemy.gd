@@ -35,6 +35,7 @@ func choose_current_player():
 func turn_around():
   $skin.set_flip_h(true)
   $weapon.position.x *= -1
+  $player_detector.position.x *= -1
   $weapon.turn_around()
   flipped = !flipped
 
