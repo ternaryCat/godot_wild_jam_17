@@ -24,6 +24,7 @@ func reload():
 
   var new_level = levels[current_level].instance()
   var new_player = player.instance()
+  new_player.choosed_gun = 'shot_gun'
   new_player.position = new_level.get_player_position(new_player.get_device_id())
   new_player.connect('dead', self, '_on_player_dead')
   new_level.connect('level_completed', self, '_on_next_level')
@@ -36,13 +37,17 @@ func reload():
     new_player_dummy.set_actions(last_live['actions'].duplicate())
     new_player_dummy.set_correct_positions(last_live['correct_positions_list'].duplicate())
     add_child(new_player_dummy)
+    new_player_dummy.change_gun(last_live['gun'])
 
 func clean_game():
   for child in get_children():
     child.queue_free()
 
-func _on_player_dead(player_id, actions, correct_positions_list):
-  player_lives.append({ 'player_id': player_id, 'actions': actions, 'correct_positions_list': correct_positions_list })
+func _on_player_dead(player_id, actions, correct_positions_list, gun):
+  player_lives.append({ 'player_id': player_id,
+                        'actions': actions,
+                        'correct_positions_list': correct_positions_list,
+                        'gun': gun })
   need_reload = true
 
 func _on_next_level():
