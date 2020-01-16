@@ -10,13 +10,32 @@ var flipped: = false
 
 const FLOOR_NORMAL: = Vector2.UP
 
+export var choosed_gun: = 'machine_gun'
+
 var left: = 0.0
 var right: = 0.0
 var top: = 0.0
 var allow_shoot
 
+onready var guns = {
+  'machine_gun': preload('res://presets/game/guns/machine_gun.tscn'),
+  'saw_gun': preload('res://presets/game/guns/saw_gun.tscn'),
+  'shot_gun': preload('res://presets/game/guns/shot_gun.tscn'),
+  'plasma_gun': preload('res://presets/game/guns/plasma_gun.tscn')
+}
+
 func _ready():
-  $weapon.active_enemy_trigger()
+  var current_gun = guns[choosed_gun].instance()
+  current_gun.active_enemy_trigger()
+  $weapon_container.add_child(current_gun)
+
+func change_gun(gun_name: String) -> void:
+  choosed_gun = gun_name
+  for weapon in $weapon_container.get_children():
+    weapon.queue_free()
+  var current_gun = guns[gun_name].instance()
+  current_gun.active_enemy_trigger()
+  $weapon_container.add_child(current_gun)
 
 func _on_input_interface_action_detected(action, params):
   if action == 'move_left':
@@ -73,10 +92,10 @@ func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) ->
   return Vector2(linear_velocity.x, stomp_jump)
 
 func shoot():
-  $weapon.shoot()
+  $weapon_container.get_child(0).shoot()
 
 func turn_around():
   $skin.set_flip_h(true)
-  $weapon.position.x *= -1
-  $weapon.turn_around()
+  $weapon_container.position.x *= -1
+  $weapon_container.get_child(0).turn_around()
   flipped = !flipped
