@@ -23,10 +23,11 @@ func _physics_process(delta):
   turn_around()
 
 func calculate_direction():
+  validate_current_target()
   if current_target:
     right = 0.0
     left = 0.0
-    if current_target.position.x > position.x:
+    if is_instance_valid(current_target) and current_target.position.x > position.x:
       right = 1.0
       return
     left = 1.0
