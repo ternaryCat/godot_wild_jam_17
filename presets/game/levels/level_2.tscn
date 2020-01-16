@@ -12,15 +12,15 @@ extents = Vector2( 1027.9, 31.5786 )
 extents = Vector2( 60.5262, 585.316 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 314.045, 11.5637 )
+extents = Vector2( 117.655, 11.5637 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 648.842, 10 )
+extents = Vector2( 167.987, 10 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 27.1689, 104.965 )
+extents = Vector2( 416.861, 5.76465 )
 
-[node name="level_1" type="Node2D"]
+[node name="level_2" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="platforms" type="StaticBody2D" parent="."]
@@ -41,48 +41,52 @@ position = Vector2( 1921.4, 500.365 )
 shape = SubResource( 2 )
 
 [node name="platform4" type="CollisionShape2D" parent="platforms"]
-position = Vector2( 1274.26, 853.957 )
+position = Vector2( 1297.75, 654.287 )
 shape = SubResource( 3 )
 
 [node name="platform5" type="CollisionShape2D" parent="platforms"]
-position = Vector2( 540.394, 713.854 )
+position = Vector2( 549.203, 892.97 )
 shape = SubResource( 3 )
 
 [node name="platform6" type="CollisionShape2D" parent="platforms"]
-position = Vector2( 1220.89, 313.562 )
+position = Vector2( 1692.05, 349.437 )
 shape = SubResource( 4 )
 
+[node name="platform7" type="CollisionShape2D" parent="platforms"]
+position = Vector2( 133.567, 335.069 )
+shape = SubResource( 3 )
+
 [node name="platform8" type="CollisionShape2D" parent="platforms"]
-position = Vector2( 246.847, 600.438 )
+position = Vector2( 837.047, 333.233 )
 shape = SubResource( 5 )
 
 [node name="enemies" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="moving_enemy_emitter" parent="enemies" instance=ExtResource( 2 )]
-position = Vector2( 1270.63, 287.005 )
+position = Vector2( 1734.61, 315.705 )
+
+[node name="moving_enemy_emitter2" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( 802.153, 301.261 )
 
 [node name="stand_enemy" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( 494.176, 935.794 )
+position = Vector2( 1026.71, 983.254 )
 
 [node name="stand_enemy2" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( 1294.76, 708.962 )
+position = Vector2( 1286.34, 547.442 )
 
 [node name="stand_enemy3" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( 554.22, 582.203 )
+position = Vector2( 1113.25, 235.265 )
 
 [node name="stand_enemy4" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( 1354.8, 935.794 )
+position = Vector2( 1570.7, 287.809 )
 
 [node name="stand_enemy5" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( 821.082, 248.626 )
-
-[node name="stand_enemy6" parent="enemies" instance=ExtResource( 3 )]
-position = Vector2( 987.87, 255.298 )
+position = Vector2( 513.625, 284.718 )
 
 [node name="player_position" type="Position2D" parent="."]
-position = Vector2( 161.993, 928.896 )
+position = Vector2( 214.538, 777.444 )
 
 [node name="door" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1786.05, 272.9 )
+position = Vector2( 154.531, 304.638 )
 [connection signal="player_entered" from="door" to="." method="_on_dore_player_entered"]
