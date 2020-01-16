@@ -16,14 +16,10 @@ func _process(delta):
     var action = actions.pop_front()
     emit_signal('action_detected', action['name'], action['params'])
     _process(delta)
-  correct_position(0)
+  correct_position()
 
-func correct_position(offset: int) -> bool:
-  if correct_positions.size() == 0 or correct_positions.size() <= offset or correct_positions[offset]['time'] > time:
-    return false
-
-  if !correct_position(offset + 1):
-    emit_signal('position_corrected', correct_positions[offset]['position'])
-    for e in range(offset):
-      correct_positions.pop_front()
-  return true
+func correct_position() -> void:
+  if correct_positions.size() != 0 and correct_positions.front()['time'] <= time:
+    emit_signal('position_corrected', correct_positions.pop_front()['position'])
+    correct_position()
+  
