@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/scenes/menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://presets/menu/button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/pixel.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 65
+font_data = ExtResource( 3 )
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -678.0
+margin_right = 678.0
+alignment = 1
+
+[node name="one_player" parent="buttons" instance=ExtResource( 2 )]
+margin_top = 95.0
+margin_right = 1356.0
+margin_bottom = 389.0
+label = "ONE PLAYER"
+
+[node name="two_players" parent="buttons" instance=ExtResource( 2 )]
+margin_top = 393.0
+margin_right = 1356.0
+margin_bottom = 687.0
+label = "TWO PLAYERS"
+
+[node name="about" parent="buttons" instance=ExtResource( 2 )]
+margin_top = 691.0
+margin_right = 1356.0
+margin_bottom = 985.0
+focus_neighbour_bottom = NodePath("../one_player")
+label = "ABOUT"
+
+[node name="center_label" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 151.0
+
+[node name="2_players_label" type="Label" parent="center_label"]
+margin_left = 81.0
+margin_top = 44.0
+margin_right = 1839.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 1 )
+text = "You need 2 connected gamepads to select  \"two players\" option"
+
+[node name="center_label2" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -146.0
+
+[node name="2_players_label" type="Label" parent="center_label2"]
+margin_left = 629.0
+margin_top = 42.0
+margin_right = 1290.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 1 )
+text = "Press \"X\" or click mouse"
+[connection signal="pressed" from="buttons/one_player" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="buttons/about" to="." method="_on_about_pressed"]
