@@ -4,8 +4,8 @@ onready var levels = [
   preload('res://presets/game/levels/level_1.tscn'),
   preload('res://presets/game/levels/level_2.tscn')
 ]
-onready var player = preload('res://presets/game/players/player.tscn')
-onready var player_dummy = preload('res://presets/game/players/player_dummy.tscn')
+onready var player = preload('res://presets/game/players/input_player.tscn')
+onready var player_dummy = preload('res://presets/game/players/actions_player.tscn')
 
 var current_level: = 0
 var player_lives: = []
@@ -24,8 +24,8 @@ func reload():
 
   var new_level = levels[current_level].instance()
   var new_player = player.instance()
-  new_player.choosed_gun = 'shot_gun'
-  new_player.position = new_level.get_player_position(new_player.get_device_id())
+  new_player.choose_gun('shot_gun')
+  new_player.set_position(new_level.get_player_position(new_player.get_device_id()))
   new_player.connect('dead', self, '_on_player_dead')
   new_level.connect('level_completed', self, '_on_next_level')
   add_child(new_level)
@@ -33,7 +33,7 @@ func reload():
 
   for last_live in player_lives:
     var new_player_dummy = player_dummy.instance()
-    new_player_dummy.position = new_level.get_player_position(last_live['player_id'])
+    new_player_dummy.set_position(new_level.get_player_position(last_live['player_id']))
     new_player_dummy.set_actions(last_live['actions'].duplicate())
     new_player_dummy.set_correct_positions(last_live['correct_positions_list'].duplicate())
     add_child(new_player_dummy)
