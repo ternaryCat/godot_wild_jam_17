@@ -1,8 +1,9 @@
-extends Node2D
+extends Node
 
 signal action_detected(action, params)
 
 export var device_id: = 0
+export var character: NodePath
 var actions: = []
 var corrected_positions: = []
 var time: = 0.0
@@ -17,7 +18,9 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta):
   time += delta
-  corrected_positions.append({ 'position': get_global_position(), 'time': time })
+  if !character:
+    return
+  corrected_positions.append({ 'position': get_node(character).get_global_position(), 'time': time })
 
 func detect_action(action, params):
   actions.append({ 'name': action, 'time': time, 'params': params })

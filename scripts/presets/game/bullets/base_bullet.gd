@@ -2,7 +2,7 @@ extends Node2D
 class_name BaseBullet
 
 export var direction_angle: = 0.0
-export var speed: = 2000
+export var speed: = 1000
 var damage: = 5
 var destructible: = true
 

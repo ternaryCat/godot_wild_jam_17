@@ -15,7 +15,6 @@ var only_one_player: = true
 func _input(event):
   if characters.size() <= event.device:
     return
-  print(event.device)
   if event.is_action_pressed('move_left'):
     if characters[event.device]['current'] == SIDES.RIGHT:
       characters[event.device]['choosed'] = SIDES.MIDDLE

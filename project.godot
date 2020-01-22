@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "BaseBullet",
 "language": "GDScript",
-"path": "res://presets/game/bullets/base_bullet.gd"
+"path": "res://scripts/presets/game/bullets/base_bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "BaseEnemy",

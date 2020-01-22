@@ -65,7 +65,16 @@ func _physics_process(delta: float) -> void:
 
   $life_bar.set_value(life)
   $life_bar.visible = life < $life_bar.max_value
-  #$skin/animation.play("walk")
+  if _velocity.x > 0:
+    $animation.play('move_right')
+    if _velocity.y != 0:
+      $animation.play('jump_right')
+  if _velocity.x < 0:
+    $animation.play('move_left')
+    if _velocity.y != 0:
+      $animation.play('jump_left')
+  if _velocity == Vector2.ZERO:
+    $animation.play('stand')
 
 func get_direction() -> Vector2:
   return Vector2(
@@ -95,7 +104,10 @@ func shoot():
   $weapon_container.get_child(0).shoot()
 
 func turn_around():
-  $skin.set_flip_h(true)
+  flipped = !flipped
+  $skin.set_flip_h(flipped)
+  $skin/left_foot.set_flip_h(flipped)
+  $skin/right_foot.set_flip_h(flipped)
+  $skin/hand.set_flip_h(flipped)
   $weapon_container.position.x *= -1
   $weapon_container.get_child(0).turn_around()
-  flipped = !flipped
