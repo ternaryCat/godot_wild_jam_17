@@ -5,7 +5,7 @@ const RANGE_START: = -PI / 8
 const RANGE_END: = PI / 8
 
 func _ready():
-  bullet = preload('res://presets/game/bullets/machine_bullet.tscn')
+  bullet = preload('res://presets/game/bullets/shot_bullet.tscn')
 
 func spawn_bullet():
   var rotation_unit: = (RANGE_END - RANGE_START) / BULLETS_COUNT
