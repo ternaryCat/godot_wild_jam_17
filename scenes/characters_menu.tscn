@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ Vector2( 906.653, 838.037 ), Vector2( 389.506, 903.263 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "choose_right"
 length = 0.4
 tracks/0/type = "value"
@@ -40,8 +40,7 @@ tracks/0/keys = {
 "values": [ Vector2( 906.653, 838 ), Vector2( 1458.77, 903.263 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "release_left"
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("player_1:position")
@@ -191,8 +190,8 @@ text = "PLAYER 2"
 
 [node name="player_1_animation" type="AnimationPlayer" parent="."]
 anims/choose_left = SubResource( 2 )
-anims/choose_right = SubResource( 4 )
-anims/release_left = SubResource( 3 )
+anims/choose_right = SubResource( 3 )
+anims/release_left = SubResource( 4 )
 anims/release_right = SubResource( 5 )
 
 [node name="player_2_animation" type="AnimationPlayer" parent="."]

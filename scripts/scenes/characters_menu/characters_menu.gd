@@ -87,4 +87,6 @@ func to_game():
     return
 
   queue_free()
-  get_tree().get_root().add_child(game.instance())
+  var new_game = game.instance()
+  new_game.players_count = 1 if only_one_player else 2
+  get_tree().get_root().add_child(new_game)

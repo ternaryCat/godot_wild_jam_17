@@ -9,9 +9,13 @@ func _on_player_dead():
               $input_interface.actions,
               $input_interface.corrected_positions,
               $player.choosed_gun)
+  queue_free()
 
 func choose_gun(gun):
   $player.choosed_gun = gun
+
+func set_device_id(device_id: int) -> void:
+  $input_interface.device_id = device_id
 
 func get_device_id():
   return $input_interface.device_id

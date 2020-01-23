@@ -66,4 +66,5 @@ margin_bottom = 104.0
 custom_fonts/font = SubResource( 1 )
 text = "Press \"X\" or click mouse"
 [connection signal="pressed" from="buttons/one_player" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="buttons/two_players" to="." method="_on_two_players_pressed"]
 [connection signal="pressed" from="buttons/about" to="." method="_on_about_pressed"]
