@@ -28,18 +28,12 @@ _global_script_classes=[ {
 "class": "BaseLevel",
 "language": "GDScript",
 "path": "res://scripts/presets/game/levels/base_level.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "BasePlayer",
-"language": "GDScript",
-"path": "res://scripts/presets/game/player/base_player.gd"
 } ]
 _global_script_class_icons={
 "BaseBullet": "",
 "BaseEnemy": "",
 "BaseGun": "",
-"BaseLevel": "",
-"BasePlayer": ""
+"BaseLevel": ""
 }
 
 [application]
