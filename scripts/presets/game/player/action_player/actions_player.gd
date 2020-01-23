@@ -17,3 +17,6 @@ func set_position(position):
 
 func change_gun(gun_name: String) -> void:
   $player.change_gun(gun_name)
+
+func set_textures(texture_pack_name: String) -> void:
+  $player.set_textures(texture_pack_name)

@@ -44,9 +44,10 @@ func _process(delta):
 
     elif character['choosed'] == SIDES.LEFT:
       get_node('player_' + str(character_index + 1) + '_animation').play('choose_left')
+      $cat/animation.play('choose')
     elif character['choosed'] == SIDES.RIGHT:
       get_node('player_' + str(character_index + 1) + '_animation').play('choose_right')
-
+      $bear/animation.play('choose')
     character['playing'] = true
     character['current'] = character['choosed']
     character['choosed'] = null
@@ -87,4 +88,12 @@ func to_game():
     return
 
   queue_free()
-  get_tree().get_root().add_child(game.instance())
+  var new_game = game.instance()
+  new_game.players = get_skins()
+  get_tree().get_root().add_child(new_game)
+
+func get_skins():
+  var skins = []
+  for character in characters:
+    skins.append({ 'skin': 'cat' if character['current'] == SIDES.LEFT else 'bear' })
+  return skins

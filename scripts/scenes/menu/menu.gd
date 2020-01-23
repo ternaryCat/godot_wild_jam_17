@@ -21,5 +21,11 @@ func _on_one_player_pressed():
   queue_free()
   get_tree().get_root().add_child(characters_menu.instance())
 
+func _on_two_players_pressed():
+  queue_free()
+  var new_characters_menu = characters_menu.instance()
+  new_characters_menu.only_one_player = false
+  get_tree().get_root().add_child(new_characters_menu)
+
 func _on_about_pressed():
   print(22)
