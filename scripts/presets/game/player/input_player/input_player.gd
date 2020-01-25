@@ -26,3 +26,6 @@ func set_position(position):
 
 func set_textures(texture_pack_name: String) -> void:
   $player.set_textures(texture_pack_name)
+
+func get_position():
+  return $player.get_position()
