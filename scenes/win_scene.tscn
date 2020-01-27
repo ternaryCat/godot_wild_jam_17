@@ -69,10 +69,11 @@ position = Vector2( 477.204, 532.89 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="body" type="Sprite" parent="first_player"]
+position = Vector2( -2.75586, 17.2313 )
 texture = ExtResource( 3 )
 
 [node name="hand" type="Sprite" parent="first_player"]
-position = Vector2( -26.7097, 313.569 )
+position = Vector2( -90.3477, 310.447 )
 texture = ExtResource( 4 )
 
 [node name="left_foot" type="Sprite" parent="first_player"]
@@ -116,12 +117,12 @@ custom_fonts/font = SubResource( 2 )
 text = " deaths"
 
 [node name="body" type="Sprite" parent="second_player"]
-position = Vector2( -3.70117, 55.5182 )
+position = Vector2( -3.701, 17.231 )
 texture = ExtResource( 6 )
 flip_h = true
 
 [node name="hand" type="Sprite" parent="second_player"]
-position = Vector2( 43.6133, 306.166 )
+position = Vector2( 103.061, 275.15 )
 texture = ExtResource( 7 )
 
 [node name="left_foot" type="Sprite" parent="second_player"]

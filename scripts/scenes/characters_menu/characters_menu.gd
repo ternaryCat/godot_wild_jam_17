@@ -3,6 +3,7 @@ extends Node2D
 enum SIDES { LEFT, RIGHT, MIDDLE }
 
 onready var game: = preload('res://scenes/game.tscn')
+onready var menu: = load('res://scenes/menu.tscn')
 
 var characters = [
   { 'choosed': null, 'current': SIDES.MIDDLE, 'playing': false },
@@ -13,6 +14,9 @@ var to_game_pressed: = false
 var only_one_player: = true
 
 func _input(event):
+  if event.is_action_pressed('back'):
+    queue_free()
+    get_tree().get_root().add_child(menu.instance())
   if characters.size() <= event.device:
     return
   if event.is_action_pressed('move_left'):
