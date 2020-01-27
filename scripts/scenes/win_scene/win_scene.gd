@@ -22,6 +22,8 @@ func _on_text_animation_animation_finished(anim_name):
   $text_animation.play('anim_text')
 
 func init(players, deathes):
+  if players[0]['skin'] == 'bear':
+    $first_player/body.position.y = 65
   $first_player/body.set_texture(textures[players[0]['skin']]['body'])
   $first_player/left_foot.set_texture(textures[players[0]['skin']]['foot'])
   $first_player/right_foot.set_texture(textures[players[0]['skin']]['foot'])
@@ -32,6 +34,8 @@ func init(players, deathes):
   if players.size() == 1:
     $second_player.hide()
     return
+  if players[1]['skin'] == 'bear':
+    $second_player/body.position.y = 65
   $second_player/body.set_texture(textures[players[1]['skin']]['body'])
   $second_player/left_foot.set_texture(textures[players[1]['skin']]['foot'])
   $second_player/right_foot.set_texture(textures[players[1]['skin']]['foot'])
