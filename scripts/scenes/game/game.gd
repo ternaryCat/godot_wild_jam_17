@@ -6,11 +6,13 @@ onready var levels = [
 ]
 onready var player = preload('res://presets/game/players/input_player.tscn')
 onready var player_dummy = preload('res://presets/game/players/actions_player.tscn')
+onready var win_scene = preload('res://scenes/win_scene.tscn')
 
 var current_level: = 0
 var player_lives: = []
 var need_reload: = true
 var players: = []
+var deathes = [0, 0]
 var players_instances: = []
 
 var players_lives_count: = 0
@@ -60,6 +62,7 @@ func _on_player_dead(player_id, actions, correct_positions_list, gun, texture_pa
                         'gun': gun,
                         'texture_pack_name': texture_pack_name })
   players_lives_count -= 1
+  deathes[player_id] += 1
   if players_lives_count <= 0:
     need_reload = true
   players_instances.remove(player_id)
@@ -70,6 +73,10 @@ func _on_next_level():
   current_level += 1
   player_lives = []
   if levels.size() == current_level:
+    queue_free()
+    var win_scene_instance = win_scene.instance()
+    get_tree().get_root().add_child(win_scene_instance)
+    win_scene_instance.init(players, deathes)
     return
   need_reload = true
   

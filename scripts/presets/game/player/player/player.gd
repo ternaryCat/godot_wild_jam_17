@@ -31,8 +31,8 @@ onready var textures = {
            'foot': preload('res://images/game/cat/cat_foot.png'),
            'hand': preload('res://images/game/cat/cat_hand.png') },
   'bear': { 'body': preload('res://images/game/bear/bear_body.png'),
-           'foot': preload('res://images/game/bear/bear_foot.png'),
-           'hand': preload('res://images/game/bear/bear_hand.png') }
+            'foot': preload('res://images/game/bear/bear_foot.png'),
+            'hand': preload('res://images/game/bear/bear_hand.png') }
 }
 
 func _ready():
