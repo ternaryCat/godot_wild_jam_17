@@ -2,6 +2,9 @@ extends Node
 
 signal dead(player_id, actions, correct_positions_list, gun, texture_pack_name)
 
+func _ready():
+  $animation.play('marker_move')
+
 func _on_player_dead():
   $input_interface.add_death_action()
   emit_signal('dead', 
