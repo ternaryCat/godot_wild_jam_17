@@ -1,15 +1,10 @@
-extends Control
+extends TextureButton
 
-signal pressed
+func _ready():
+  $top.set_texture(get_normal_texture())
 
-export var label: = ''
+func _focus_entered():
+  $player.play('active')
 
-func _process(delta):
-  $center/label.set_text(label)
-  $center/button.set_pressed(true)
-
-func set_focus():
-  $center/button.grab_focus()
-
-func _on_button_pressed():
-  emit_signal('pressed')
+func _focus_exited():
+  $player.play('stop')
