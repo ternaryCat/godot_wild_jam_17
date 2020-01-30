@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/scenes/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://presets/menu/button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/pixel.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://images/menu/title.png" type="Texture" id=4]
+[ext_resource path="res://images/menu/two_players_button.png" type="Texture" id=5]
+[ext_resource path="res://images/menu/about_button.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 65
 font_data = ExtResource( 3 )
 
@@ -12,59 +15,110 @@ font_data = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="center_title" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_left = 1.0
+margin_top = 13.0
+margin_right = 1.0
+margin_bottom = 287.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="top" type="TextureRect" parent="center_title"]
+margin_left = 533.0
+margin_top = 55.0
+margin_right = 1387.0
+margin_bottom = 218.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="buttons" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -678.0
-margin_right = 678.0
+margin_left = -209.072
+margin_top = 432.171
+margin_right = 203.928
+margin_bottom = -166.829
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="one_player" parent="buttons" instance=ExtResource( 2 )]
-margin_top = 95.0
-margin_right = 1356.0
-margin_bottom = 389.0
-label = "ONE PLAYER"
+[node name="center_one" type="CenterContainer" parent="buttons"]
+margin_top = 73.0
+margin_right = 474.0
+margin_bottom = 182.0
 
-[node name="two_players" parent="buttons" instance=ExtResource( 2 )]
-margin_top = 393.0
-margin_right = 1356.0
-margin_bottom = 687.0
-label = "TWO PLAYERS"
+[node name="one_player" parent="buttons/center_one" instance=ExtResource( 2 )]
+margin_left = 30.0
+margin_right = 443.0
+focus_next = NodePath("../two_players")
+focus_previous = NodePath("../about")
 
-[node name="about" parent="buttons" instance=ExtResource( 2 )]
-margin_top = 691.0
-margin_right = 1356.0
-margin_bottom = 985.0
+[node name="center_two" type="CenterContainer" parent="buttons"]
+margin_top = 186.0
+margin_right = 474.0
+margin_bottom = 295.0
+
+[node name="two_players" parent="buttons/center_two" instance=ExtResource( 2 )]
+margin_right = 474.0
+focus_next = NodePath("../about")
+focus_previous = NodePath("../one_player")
+texture_normal = ExtResource( 5 )
+
+[node name="center_about" type="CenterContainer" parent="buttons"]
+margin_top = 299.0
+margin_right = 474.0
+margin_bottom = 408.0
+
+[node name="about" parent="buttons/center_about" instance=ExtResource( 2 )]
+margin_left = 123.0
+margin_right = 350.0
 focus_neighbour_bottom = NodePath("../one_player")
-label = "ABOUT"
+focus_next = NodePath("../one_player")
+focus_previous = NodePath("../two_players")
+texture_normal = ExtResource( 6 )
 
 [node name="center_label" type="CenterContainer" parent="."]
 anchor_right = 1.0
-margin_bottom = 151.0
+margin_top = 250.0
+margin_bottom = 365.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="2_players_label" type="Label" parent="center_label"]
+[node name="two_players_label" type="Label" parent="center_label"]
 margin_left = 81.0
-margin_top = 44.0
+margin_top = 26.0
 margin_right = 1839.0
-margin_bottom = 106.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 2 )
 text = "You need 2 connected gamepads to select  \"two players\" option"
 
-[node name="center_label2" type="CenterContainer" parent="."]
+[node name="center_label_2" type="CenterContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -146.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="2_players_label" type="Label" parent="center_label2"]
+[node name="label" type="Label" parent="center_label_2"]
 margin_left = 629.0
 margin_top = 42.0
 margin_right = 1290.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Press \"X\" or click mouse"
-[connection signal="pressed" from="buttons/one_player" to="." method="_on_one_player_pressed"]
-[connection signal="pressed" from="buttons/two_players" to="." method="_on_two_players_pressed"]
-[connection signal="pressed" from="buttons/about" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="buttons/center_one/one_player" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="buttons/center_two/two_players" to="." method="_on_two_players_pressed"]
+[connection signal="pressed" from="buttons/center_about/about" to="." method="_on_about_pressed"]

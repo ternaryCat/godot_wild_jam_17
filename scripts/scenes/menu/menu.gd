@@ -3,15 +3,13 @@ extends Control
 onready var characters_menu = preload('res://scenes/characters_menu.tscn')
 
 func _ready():
-  $buttons/one_player.set_focus()
+  $buttons/center_one/one_player.grab_focus()
 
 func _process(delta):
   set_active_two_players(gamepads_size() >= 2)
-  for e in $buttons.get_children():
-    pass
 
 func set_active_two_players(status):
-  $buttons/two_players/center/button.disabled = !status
+  $buttons/center_two/two_players.disabled = !status
   $center_label.visible = !status
 
 func gamepads_size():
