@@ -17,6 +17,9 @@ func calculate_position():
   return new_position
 
 func calculate_zoom():
+  if players.size() == 1:
+    return Vector2.ONE
+
   var lowest_x: = 0
   var lowest_y: = 0
   var largest_x: = 0
